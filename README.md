@@ -1,49 +1,74 @@
-# HYSC
-a clustering algorithm for single-cell data
-
-
 HYbrid-clustering for Single-cell Categorization (HYSC)
 
 ---------------------------------------------------------------------------------------------------------
-Three steps to run HYSC:
-1) Prepare a .xlsx data file containing expression data. The first column contains the gene symbles and the first row contains cell IDs. The dropouts should be zero-inflated.
-2) Prepare the 'HYSC Input.txt' file containing all input parameters, including the file path of data.
-3) Put the data file and the 'HYSC Input.txt' files into the same folder of HYSC.m.
-4) Run HYSC by typing HYSC in MATLAB commond window.
+To run standalone HYSC without MATLAB:
 
-In this demo, we included two testing datasets stored in the files 'Pollen.xlsx' and 'Treulein.xlsx'. 
-The corresponding examples of HYSC parameter files are stored in 'HYSC Input for Pollen.txt' and 'HYSC Input for Treulien.txt'.
+Download and install the MATLAB Runtime installer: Windows 64-bit version of the MATLAB Runtime for R2017a,  
+from the MathWorks Web site by navigating to
+
+   http://www.mathworks.com/products/compiler/mcr/index.html
+
 
 ---------------------------------------------------------------------------------------------------------
+Steps to run demo HYSC:
+1)  Unzip the file 'Su Fetal liver.rar', open the 'Su Fetal liver.txt' in Excel and save the file into 'Su Fetal liver.xlsx'.
+2)  Type in 'HYSC_gui' in the MATLAB commond window or double click the 'HYSC.exe' icon.
+3)  Select the data file, 'Su Fetal liver.xlsx', and you MUST click 'Advanced settings' button first to set up parameters.
+4)  Click 'Run'.
+5)  Type in 'ViSC_gui' in the MATLAB commond window or double click the 'ViSC.exe' icon.
+6)  Select the 'HYSC Output.xlsx' file, and type in the gene symbol of interest. The gene symbol must be contained in the sheet 3 of 'HYSC Output.xlsx'.
+7)  Click 'Run'.
 
+---------------------------------------------------------------------------------------------------------
+Data file preparation
+
+The expression data should be stored in a .xlsx file with the first column being gene symbols and the first row cell IDs. 
+The cell IDs could be either indexs of cells or some a priori information about cell categories, such as time slots. In the latter case, 'Cell Anno' should be checked.
+The dropouts should be zero-inflated.
+
+---------------------------------------------------------------------------------------------------------
 Input parameters:
-dataPath                 - The directory of .xlsx file containing expression data. The first column contains the gene symbles and the first row contains cell IDs. The dropouts should be zero-inflated.
-ClusterNum               - the given number of clusters. If ClusterNum = 0, the algorithm automatically estimates the number of clusters
-Nmax                     - the maximum number of cell clusters. By default, Nmax = 30
-minClusterSize_number    - the minimum number of samples (cells) in each cluster. By default, minClusterSize_number = 10
-dimClustering            - the number of principle components adopted by k-means clustering. By default, dimClustering = 30
-r2cutoff                 - OPLSDA parameters, r2 cutoff value to identify discriminatory variables. By default 0.5
-pcutoff                  - OPLSDA parameters, p cutoff value to identify discriminatory variables. By default 0.05 after bonferroni correction
-perp                     - perplexity parameter of tSNE. By default, perp = 30
-maxHYSCLayer             - the maximum number of HYSC layers. By default, maxHYSCLayer = 5
-cores                    - the number of cores used in parallel computation. By default, cores = 8
-tSNEScores               - the index of tSNE scores adopted for scores plot. By default, the first two components are illustrated.
-geneFiltering_cellCounts - the mimimum number of cells in which a gene must express. By default >0.
-geneFiltering_var        - the mimimum variance of a valid gene. By default >0.
 
-All of the input parameter must be given in a .txt file, where the 'dataPath' is compulsory, and the other parameters are optional.
-The name of a parameter should be separated from its value by ': '.
+Log Transform            - check to perform log transform.
+Gene Filtering           - check to perform gene filtering using the parameters specified by 'Filtering No. cells' and 'Filtering Var' in 'AdvancedSetting'.
+Cell Anno                - check to incorporate additional information in result plot, e.g., time information of cells, 
+                           By default, []. In this case, the annotation of cells will be cluster indexs.
+Max HYSC Layers          - the maximum number of HYSC layers.
+
+Advanced Setting:
+Cores                    - the number of cores used in parallel computation. By default, cores = 8.
+Min Cluster Size         - the minimum number of samples (cells) in each cluster. By default, 10.
+Dim Clustering           - the number of principle components adopted by k-means clustering. By default, 5.
+r2-cutoff                - OPLSDA parameters, r2 cutoff value to identify discriminatory variables. By default, 0.5.
+p-cutoff                 - OPLSDA parameters, p cutoff value to identify discriminatory variables. By default, 0.05 after bonferroni correction.
+Perplexity               - perplexity parameter of tSNE. By default, 30.
+Filtering No. cells      - the mimimum number of cells in which a gene must express. By default, >2.
+Filtering Var            - the mimimum variance of a gene. By default, >0.5.
+
+---------------------------------------------------------------------------------------------------------
+Output:
+1) 'HYSC Output.xlsx':
+Sheet 1 - the cell categorization indexs
+Sheet 2 - tSNE scores for scatter plot
+Sheet 3 - gene expression data
+
+2) 'HYSC gene markers.xlsx': each sheet contains the gene markers of a cell cluster.
+
+3) A tSNE scatter plot with the cells represented by the indexs of clusters they are assigned to.
+
+4) A gene expression heatmap. The rows are selected gene markers of individual cell clusters and the cell cluster indexs are provided at the bottom of the plot.
+The dots above the heatmap indicate cell annotations, and the colors representing different annotation indexs are provided in the colorbar on the right.
+
+---------------------------------------------------------------------------------------------------------
+Tips:
+
+Before each run, please click 'Cancel' button to clear memnory.
 
 ---------------------------------------------------------------------------------------------------------
 
-Output:
-The output is stored in an excel file with 3 sheets, 
-Sheet 1 - the cell categorization indexs
-Sheet 2 - the list of variable genes
-Sheet 3 - the tSNE scores, cells vs tSNE components
 
-Author Xin Zou, Jie hao, SJTU, China
+Author Jie hao, Xin Zou, SJTU, China
 
-Copyright Xin Zou, Jie Hao
+Copyright Jie Hao, Xin Zou
 
 2018
