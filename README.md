@@ -14,7 +14,7 @@ Steps to run demo HYSC:
 1)  Unzip the file 'Su Fetal liver.rar', open the 'Su Fetal liver.txt' in Excel and save the file into 'Su Fetal liver.xlsx'.
 2)  Type in 'HYSC_gui' in the MATLAB commond window or double click the 'HYSC.exe' icon.
 3)  Select the data file, 'Su Fetal liver.xlsx', and you MUST click 'Advanced settings' button first to set up parameters.
-4)  Click 'Run'.
+4)  Check 'Log Transform', 'Gene filtering' and 'Cell Anno', set 'Max HYSC Layers' to '1' and click 'Run'.
 5)  Type in 'ViSC_gui' in the MATLAB commond window or double click the 'ViSC.exe' icon.
 6)  Select the 'HYSC Output.xlsx' file, and type in the gene symbol of interest. The gene symbol must be contained in the sheet 3 of 'HYSC Output.xlsx'.
 7)  Click 'Run'.
