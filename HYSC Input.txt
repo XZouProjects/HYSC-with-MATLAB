@@ -1,4 +1,0 @@
-dataPath: .\Treulein.xlsx
-maxHYSCLayer: 2
-geneFiltering_cellCounts: 2
-geneFiltering_var: 0.5
