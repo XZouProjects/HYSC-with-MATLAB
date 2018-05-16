@@ -37,7 +37,7 @@ Max HYSC Layers          - the maximum number of HYSC layers.
 
 Advanced Setting:
 Cores                    - the number of cores used in parallel computation. By default, cores = 8.
-Min Cluster Size         - the minimum number of samples (cells) in each cluster. By default, 10.
+Min Cluster Size         - the minimum number of samples (cells) in each cluster. By default, 5.
 Dim Clustering           - the number of principle components adopted by k-means clustering. By default, 5.
 r2-cutoff                - OPLSDA parameters, r2 cutoff value to identify discriminatory variables. By default, 0.5.
 p-cutoff                 - OPLSDA parameters, p cutoff value to identify discriminatory variables. By default, 0.05 after bonferroni correction.
