@@ -1,4 +1,4 @@
-HYbrid-clustering for Single-cell Categorization (HYSC)
+HYbrid-clustering for Single-cell Categorization (HYSC) for Win system only
 
 ---------------------------------------------------------------------------------------------------------
 To run standalone HYSC without MATLAB:
